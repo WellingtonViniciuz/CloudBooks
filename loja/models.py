@@ -27,7 +27,9 @@ class Categoria(models.Model):
 class Livro(models.Model):
     titulo = models.CharField(max_length=200)
     autor = models.CharField(max_length=150)
-    categoria = models.ForeignKey(Categoria, on_delete=models.PROTECT, related_name="livros")
+    categoria = models.ForeignKey(
+        Categoria, on_delete=models.PROTECT, related_name="livros"
+    )
     isbn = models.CharField("ISBN", max_length=17, unique=True)
     ano_publicacao = models.PositiveIntegerField("ano de publicação")
     num_paginas = models.PositiveIntegerField("número de páginas")
@@ -53,7 +55,9 @@ class Livro(models.Model):
         promocao = self.promocoes.filter(ativa=True).order_by("-percentual").first()
         if promocao is None:
             return self.preco
-        return (self.preco * (100 - promocao.percentual) / 100).quantize(Decimal("0.01"))
+        return (self.preco * (100 - promocao.percentual) / 100).quantize(
+            Decimal("0.01")
+        )
 
 
 class Promocao(models.Model):
@@ -68,13 +72,19 @@ class Promocao(models.Model):
 
 
 class ItemCarrinho(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="itens_carrinho")
-    livro = models.ForeignKey(Livro, on_delete=models.CASCADE, related_name="itens_carrinho")
+    usuario = models.ForeignKey(
+        Usuario, on_delete=models.CASCADE, related_name="itens_carrinho"
+    )
+    livro = models.ForeignKey(
+        Livro, on_delete=models.CASCADE, related_name="itens_carrinho"
+    )
     quantidade = models.PositiveIntegerField(default=1)
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=["usuario", "livro"], name="item_unico_no_carrinho"),
+            models.UniqueConstraint(
+                fields=["usuario", "livro"], name="item_unico_no_carrinho"
+            ),
         ]
 
     @property
@@ -91,7 +101,9 @@ class Pedido(models.Model):
         ("cancelado", "Cancelado"),
     ]
 
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="pedidos")
+    usuario = models.ForeignKey(
+        Usuario, on_delete=models.CASCADE, related_name="pedidos"
+    )
     criado_em = models.DateTimeField(auto_now_add=True)
     endereco = models.CharField("endereço de entrega", max_length=200)
     pagamento = models.CharField(max_length=40)
@@ -104,13 +116,17 @@ class Pedido(models.Model):
 
 class ItemPedido(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE, related_name="itens")
-    livro = models.ForeignKey(Livro, on_delete=models.PROTECT, related_name="itens_pedido")
+    livro = models.ForeignKey(
+        Livro, on_delete=models.PROTECT, related_name="itens_pedido"
+    )
     quantidade = models.PositiveIntegerField()
     preco_unitario = models.DecimalField(max_digits=8, decimal_places=2)
 
 
 class Favorito(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="favoritos")
+    usuario = models.ForeignKey(
+        Usuario, on_delete=models.CASCADE, related_name="favoritos"
+    )
     livro = models.ForeignKey(Livro, on_delete=models.CASCADE, related_name="favoritos")
 
     class Meta:
@@ -126,7 +142,9 @@ class Estante(models.Model):
         ("lido", "Já lidos"),
     ]
 
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name="estantes")
+    usuario = models.ForeignKey(
+        Usuario, on_delete=models.CASCADE, related_name="estantes"
+    )
     livro = models.ForeignKey(Livro, on_delete=models.CASCADE, related_name="estantes")
     status = models.CharField(max_length=20, choices=STATUS)
 

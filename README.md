@@ -13,7 +13,7 @@ Projeto de livraria virtual desenvolvido com **Python, Django, HTML, CSS, JavaSc
 2. Abra o terminal dentro da pasta `CloudBooks` (a pasta onde está o arquivo `manage.py`).
 3. Crie e ative o ambiente virtual:
    - Windows: `python -m venv venv` e depois `venv\Scripts\activate`
-   - Linux/macOS: `python3 -m venv venv` e depois `source venv/bin/activate`
+   - Linux/macOS: `python3 -m venv venv` && `source venv/bin/activate`
 4. Instale as dependências:
    `pip install -r requirements.txt`
 5. Crie as tabelas do banco de dados:
