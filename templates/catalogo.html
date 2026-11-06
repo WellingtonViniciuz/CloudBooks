@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block titulo %}{{ secao }}{% endblock %}
+{% block conteudo %}
+{% if destaques %}
+<section class="vitrine" aria-label="Destaques">
+  {% for livro in destaques %}
+  <a class="slide" href="{% url 'livro' livro.pk %}">
+    <div class="capa {{ livro.classe_capa }}"><span>{{ livro.titulo }}</span></div>
+    <div>
+      <h2>{{ livro.titulo }}</h2>
+      <p class="autor">{{ livro.autor }}</p>
+      <p class="preco">R$ {{ livro.preco_final }}</p>
+    </div>
+  </a>
+  {% endfor %}
+</section>
+{% endif %}
+<nav class="chips">
+  <a class="chip{% if not categoria_ativa %} ativo{% endif %}" href="{% url 'categorias' %}">Todas</a>
+  {% for c in categorias %}
+  <a class="chip{% if categoria_ativa == c %} ativo{% endif %}" href="{% url 'categoria' c.pk %}">{{ c.nome }}</a>
+  {% endfor %}
+</nav>
+{% if mais_vendidos %}
+<h2 class="secao">Mais vendidos</h2>
+<div class="grade">{% for livro in mais_vendidos %}{% include "parciais/card.html" %}{% endfor %}</div>
+{% endif %}
+{% if promocoes %}
+<h2 class="secao">Promoções</h2>
+<div class="grade">{% for livro in promocoes %}{% include "parciais/card.html" %}{% endfor %}</div>
+{% endif %}
+<h2 class="secao">{{ secao }}</h2>
+<div class="grade">
+  {% for livro in livros %}{% include "parciais/card.html" %}{% empty %}<p class="vazio">Nenhum livro encontrado. Tente outra busca ou categoria.</p>{% endfor %}
+</div>
+{% endblock %}
