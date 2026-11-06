@@ -118,3 +118,7 @@ dd{margin:0}
   h1{font-size:2rem}
   .entrada h1{font-size:3.2rem}
 }
+body.entrada-pagina{background:linear-gradient(180deg,rgba(20,30,50,.25),rgba(20,30,50,.6)),url("../img/entrada.jpg") center/cover no-repeat fixed;background-color:var(--noturno)}
+.entrada-pagina .entrada h1{color:var(--branco);text-shadow:0 2px 18px rgba(20,30,50,.6)}
+.entrada-pagina .entrada p{color:var(--bebe);text-shadow:0 1px 10px rgba(20,30,50,.6)}
+.entrada-pagina .botao.secundario{background:rgba(255,255,255,.12);color:var(--branco);box-shadow:inset 0 0 0 1px var(--bebe);backdrop-filter:blur(4px)}
