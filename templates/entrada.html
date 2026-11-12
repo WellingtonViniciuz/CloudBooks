@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends "home.html" %}
 {% block classe_corpo %}entrada-pagina{% endblock %}
 
 {% block cabecalho %}
 <header class="topo-entrada">
-  <nav aria-label="Acesso à conta">
-    <a class="botao secundario pequeno" href="{% url 'login' %}">Login</a>
-    <a class="botao secundario pequeno" href="{% url 'cadastro' %}">Cadastro</a>
+  <nav aria-label="Acesso à conta" class="auth-buttons">
+    <a class="btn-login" href="{% url 'login' %}">Login</a>
+    <a class="btn-criar-conta" href="{% url 'cadastro' %}">Criar conta</a>
   </nav>
 </header>
 {% endblock %}
