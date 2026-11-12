@@ -8,19 +8,19 @@
   --cor-roxo-destaque: #6A3BB8;
   --cor-dourado-principal: #D9B36F;
   --cor-dourado-claro: #F7E6B7;
-  
+
   --cor-roxo-suave: #8B5FD6;
   --cor-lilas: #C9A8FF;
   --cor-azul-roxo: #2E2653;
   --cor-azul-noturno: #4A5B8F;
   --cor-cinza-roxo: #6B5C7F;
   --cor-cinza-claro: #B8B2C7;
-  
+
   --cor-texto-principal: #FAF8F6;
   --cor-texto-secundario: #E5D6B8;
   --cor-texto-suave: #A9A1B8;
   --cor-paineis: #1F1F2E;
-  
+
   --cor-hover: #9B6BFF;
   --cor-ativo: #B67CFF;
   --cor-destaque: #F4C97A;
@@ -54,7 +54,8 @@ a {
   transition: color 0.3s ease;
 }
 
-a:hover, a:focus-visible {
+a:hover,
+a:focus-visible {
   color: var(--cor-dourado-principal);
   outline: none;
 }
@@ -106,7 +107,7 @@ a:hover, a:focus-visible {
 
 .topo-entrada {
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
   padding: 2rem 3rem;
   width: 100%;
 }
@@ -117,7 +118,7 @@ a:hover, a:focus-visible {
   border-radius: 16px;
   padding: 4rem 2rem;
   max-width: 600px;
-  margin: auto; 
+  margin: auto;
   text-align: center;
   box-shadow: 0 20px 50px rgba(11, 11, 26, 0.7);
   backdrop-filter: blur(8px);
@@ -142,7 +143,7 @@ a:hover, a:focus-visible {
    ========================================================================== */
 .auth-buttons {
   display: flex;
-  gap: 1rem; 
+  gap: 1rem;
   align-items: center;
   justify-content: flex-end;
   flex-wrap: wrap;
@@ -151,33 +152,36 @@ a:hover, a:focus-visible {
 .btn-login {
   background-color: transparent;
   color: var(--cor-texto-principal);
-  border: 1px solid var(--cor-cinza-claro); 
-  border-radius: 25px; 
+  border: 1px solid var(--cor-cinza-claro);
+  border-radius: 25px;
   padding: 8px 24px;
   font-size: 1rem;
   font-family: inherit;
   transition: all 0.3s ease;
 }
 
-.btn-login:hover, .btn-login:focus-visible {
+.btn-login:hover,
+.btn-login:focus-visible {
   background-color: var(--cor-fundo-secundario);
   border-color: var(--cor-texto-principal);
 }
 
 .btn-criar-conta {
-  background-color: var(--cor-dourado-principal); 
-  color: var(--cor-fundo-principal); 
+  background-color: var(--cor-dourado-principal);
+  color: var(--cor-fundo-principal);
   border: none;
-  border-radius: 25px; 
-  padding: 9px 24px; 
+  border-radius: 25px;
+  padding: 9px 24px;
   font-size: 1rem;
   font-weight: 600;
   font-family: inherit;
   transition: all 0.3s ease;
 }
 
-.btn-criar-conta:hover, .btn-criar-conta:focus-visible {
+.btn-criar-conta:hover,
+.btn-criar-conta:focus-visible {
   background-color: var(--cor-destaque);
+  color: var(--cor-fundo-principal);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(217, 179, 111, 0.4);
 }
@@ -196,14 +200,15 @@ a:hover, a:focus-visible {
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 15px rgba(106, 59, 184, 0.4);
 }
 
-.botao:hover, .botao:focus-visible {
+.botao:hover,
+.botao:focus-visible {
   background-color: var(--cor-hover);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(155, 107, 255, 0.6);
@@ -221,9 +226,10 @@ a:hover, a:focus-visible {
   box-shadow: none;
 }
 
-.botao.secundario:hover, .botao.secundario:focus-visible {
+.botao.secundario:hover,
+.botao.secundario:focus-visible {
   background-color: var(--cor-roxo-suave);
-  color: var(--cor-fundo-principal); 
+  color: var(--cor-fundo-principal);
 }
 
 .botao.pequeno {
@@ -255,7 +261,8 @@ a:hover, a:focus-visible {
   color: var(--cor-dourado-principal);
 }
 
-.nav-explorar, .nav-usuario {
+.nav-explorar,
+.nav-usuario {
   display: flex;
   gap: 1.5rem;
   align-items: center;
@@ -382,7 +389,8 @@ main {
 .card .autor {
   font-size: 1rem;
   color: var(--cor-texto-suave);
-  margin-bottom: auto; /* Empurra o preço e botão para baixo */
+  margin-bottom: auto;
+  /* Empurra o preço e botão para baixo */
 }
 
 .card .preco {
@@ -404,8 +412,8 @@ main {
   margin: 0 auto;
 }
 
-.formulario input, 
-.formulario textarea, 
+.formulario input,
+.formulario textarea,
 .formulario select {
   width: 100%;
   padding: 0.8rem 1rem;
@@ -418,7 +426,7 @@ main {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.formulario input:focus, 
+.formulario input:focus,
 .formulario textarea:focus {
   outline: none;
   border-color: var(--cor-dourado-principal);
@@ -469,9 +477,11 @@ main {
     flex-direction: column;
     text-align: center;
   }
+
   .entrada {
     padding: 2rem 1.5rem;
   }
+
   main {
     margin: 1rem;
     padding: 1.5rem;
@@ -498,7 +508,7 @@ main {
   color: var(--cor-texto-principal);
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
-  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -507,7 +517,8 @@ main {
 /* Botão Dourado Gradiente */
 .btn-gold {
   background: linear-gradient(135deg, #F4C97A, #C79A47);
-  color: #1A1033 !important; /* CORREÇÃO: Força a cor escura no texto */
+  color: #1A1033 !important;
+  /* CORREÇÃO: Força a cor escura no texto */
   font-weight: 700;
   border: none;
   border-radius: 25px;
@@ -521,10 +532,12 @@ main {
   gap: 8px;
   text-decoration: none;
 }
+
 .btn-gold:hover {
   transform: scale(1.02);
   box-shadow: 0 0 20px rgba(244, 201, 122, 0.4);
-  color: #1A1033 !important; /* CORREÇÃO: Impede que o hover global de links mude a cor do texto */
+  color: #1A1033 !important;
+  /* CORREÇÃO: Impede que o hover global de links mude a cor do texto */
 }
 
 /* Botão Google / Secundário Escuro */
@@ -542,6 +555,7 @@ main {
   justify-content: center;
   gap: 10px;
 }
+
 .btn-dark-outline:hover {
   background: rgba(255, 255, 255, 0.1);
 }
@@ -553,6 +567,7 @@ main {
   gap: 2rem;
   align-items: start;
 }
+
 .linha-carrinho {
   display: flex;
   gap: 1.5rem;
@@ -562,20 +577,26 @@ main {
   background: transparent;
   transition: background 0.2s;
 }
+
 .linha-carrinho:hover {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
 }
+
 .controle-qtd {
   display: flex;
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 4px 12px;
   gap: 12px;
 }
-.controle-qtd form { margin: 0; }
+
+.controle-qtd form {
+  margin: 0;
+}
+
 .controle-qtd button {
   background: transparent;
   color: white;
@@ -586,9 +607,24 @@ main {
 }
 
 /* Formulários Estilizados para Auth e Config */
-.auth-box { max-width: 450px; margin: 3rem auto; text-align: center; }
-.auth-box .formulario p { text-align: left; margin-bottom: 1.5rem; }
-.auth-box .formulario label { display: block; margin-bottom: 0.5rem; color: var(--cor-texto-suave); font-size: 0.9rem; }
+.auth-box {
+  max-width: 450px;
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.auth-box .formulario p {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.auth-box .formulario label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+}
+
 .auth-box .formulario input {
   background: rgba(0, 0, 0, 0.4) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -603,8 +639,17 @@ main {
   grid-template-columns: 250px 1fr;
   gap: 2rem;
 }
-.sidebar-menu { list-style: none; padding: 0; margin: 0; }
-.sidebar-menu li { margin-bottom: 0.5rem; }
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  margin-bottom: 0.5rem;
+}
+
 .sidebar-menu a {
   display: flex;
   align-items: center;
@@ -614,11 +659,223 @@ main {
   border-radius: 8px;
   transition: all 0.2s;
 }
-.sidebar-menu a:hover, .sidebar-menu a.ativo {
-  background: rgba(255,255,255,0.1);
+
+.sidebar-menu a:hover,
+.sidebar-menu a.ativo {
+  background: rgba(255, 255, 255, 0.1);
   color: var(--cor-texto-principal);
 }
 
 @media(max-width: 900px) {
-  .carrinho-layout, .config-layout { grid-template-columns: 1fr; }
+
+  .carrinho-layout,
+  .config-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+html {
+  font-size: 18px;
+}
+
+/* ==========================================================================
+   Hero Destaques (Carrossel 3D)
+   ========================================================================== */
+.hero-destaque {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 3rem;
+  background: radial-gradient(circle at center, rgba(58, 27, 107, 0.4) 0%, rgba(11, 11, 26, 0.8) 100%);
+  border-radius: 20px;
+  margin-bottom: 4rem;
+  border: 1px solid rgba(217, 179, 111, 0.15);
+  /* Borda levemente dourada */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.hero-info {
+  flex: 1;
+  max-width: 450px;
+  z-index: 5;
+}
+
+.badge-destaque {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  color: var(--cor-dourado-claro);
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-info h2 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin: 0 0 1rem 0;
+  color: var(--cor-texto-principal);
+  font-weight: 700;
+}
+
+.hero-info p {
+  color: var(--cor-texto-suave);
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.carousel-container {
+  flex: 1.5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 450px;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+}
+
+.carousel-item {
+  position: absolute;
+  width: 220px;
+  height: 330px;
+  transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Efeito 3D nas Posições */
+.carousel-item.active {
+  transform: translateX(0) scale(1.1) translateZ(100px);
+  z-index: 3;
+  opacity: 1;
+  box-shadow: 0 0 40px rgba(217, 179, 111, 0.3);
+  /* Brilho dourado no livro ativo */
+}
+
+.carousel-item.active img {
+  border: 2px solid var(--cor-dourado-principal);
+}
+
+.carousel-item.prev {
+  transform: translateX(-45%) scale(0.85) translateZ(-50px) rotateY(15deg);
+  z-index: 2;
+  opacity: 0.6;
+}
+
+.carousel-item.next {
+  transform: translateX(45%) scale(0.85) translateZ(-50px) rotateY(-15deg);
+  z-index: 2;
+  opacity: 0.6;
+}
+
+.carousel-item.hidden {
+  transform: translateX(0) scale(0.5) translateZ(-150px);
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-btn {
+  background: rgba(31, 31, 46, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 4;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.nav-btn:hover {
+  background: var(--cor-roxo-destaque);
+  border-color: var(--cor-dourado-principal);
+  transform: scale(1.1);
+}
+
+.prev-btn {
+  position: absolute;
+  left: 0;
+}
+
+.next-btn {
+  position: absolute;
+  right: 0;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: -10px;
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: var(--cor-dourado-principal);
+  transform: scale(1.3);
+  box-shadow: 0 0 10px var(--cor-dourado-principal);
+}
+
+@media(max-width: 900px) {
+  .hero-destaque {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 1.5rem;
+  }
+
+  .badge-destaque {
+    margin: 0 auto 1.5rem;
+  }
+
+  .carousel-container {
+    width: 100%;
+    height: 350px;
+  }
+
+  .carousel-item {
+    width: 160px;
+    height: 240px;
+  }
+
+  .nav-btn {
+    display: none;
+    /* Oculta setas no mobile para ficar mais limpo, usando apenas dots */
+  }
 }

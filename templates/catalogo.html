@@ -2,31 +2,61 @@
 {% block titulo %}{{ secao }}{% endblock %}
 {% block conteudo %}
 
-<!-- Substituição do style inline das capas da vitrine pela classe .capa já ajustada no CSS -->
+<!-- Seção: Destaques do Mês (Estilo Vitrine 3D) -->
+<section class="hero-destaque">
+  <div class="hero-info">
+    <div class="badge-destaque">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+      Destaques do mês
+    </div>
+    <h2 class="titulo-glow">Os livros mais vendidos <span>✨</span></h2>
+    <p>Descubra as histórias que encantaram nossa comunidade.</p>
+    <a href="#titulo-catalogo" class="btn-gold">Ver todos →</a>
+  </div>
+  
+  <div class="carousel-container">
+    <button class="nav-btn prev-btn">❮</button>
+    <div class="carousel">
+      <!-- Livro 1 (Centralizado inicialmente) -->
+      <div class="carousel-item active">
+        <a href="#"><img src="https://m.media-amazon.com/images/I/91M9xPIf10L._SL1500_.jpg" alt="O Hobbit"></a>
+      </div>
+      <!-- Livro 2 (Direita) -->
+      <div class="carousel-item next">
+        <a href="#"><img src="https://m.media-amazon.com/images/I/81eT2pjx4jL._SL1500_.jpg" alt="Hábitos Atômicos"></a>
+      </div>
+      <!-- Livro 3 (Escondido) -->
+      <div class="carousel-item hidden">
+        <a href="#"><img src="https://m.media-amazon.com/images/I/91DZobBc1BL._SL1500_.jpg" alt="Coraline"></a>
+      </div>
+      <!-- Livro 4 (Escondido) -->
+      <div class="carousel-item hidden">
+        <a href="#"><img src="https://m.media-amazon.com/images/I/51tAD6LyZ-L._SL1360_.jpg" alt="Fahrenheit 451"></a>
+      </div>
+      <!-- Livro 5 (Esquerda) -->
+      <div class="carousel-item prev">
+        <a href="#"><img src="https://m.media-amazon.com/images/I/91n-D9eAH0L._SL1500_.jpg" alt="A Ilha do Tesouro"></a>
+      </div>
+    </div>
+    <button class="nav-btn next-btn">❯</button>
+    
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- Filtros e Catálogo Padrão -->
 <nav class="chips" aria-label="Filtrar por categorias" style="display: flex; gap: 0.8rem; margin: 2rem 0; flex-wrap: wrap;">
   <a class="botao secundario pequeno {% if not categoria_ativa %}ativo{% endif %}" href="{% url 'categorias' %}">Todas</a>
   {% for c in categorias %}
   <a class="botao secundario pequeno {% if categoria_ativa == c %}ativo{% endif %}" href="{% url 'categoria' c.pk %}">{{ c.nome }}</a>
   {% endfor %}
 </nav>
-
-{% if mais_vendidos %}
-<section aria-labelledby="titulo-vendidos">
-  <h2 id="titulo-vendidos" class="secao">Mais vendidos</h2>
-  <div class="grade">
-    {% for livro in mais_vendidos %}{% include "parciais/card.html" %}{% endfor %}
-  </div>
-</section>
-{% endif %}
-
-{% if promocoes %}
-<section aria-labelledby="titulo-promocoes">
-  <h2 id="titulo-promocoes" class="secao">Promoções</h2>
-  <div class="grade">
-    {% for livro in promocoes %}{% include "parciais/card.html" %}{% endfor %}
-  </div>
-</section>
-{% endif %}
 
 <section aria-labelledby="titulo-catalogo">
   <h2 id="titulo-catalogo" class="secao">{{ secao }}</h2>
@@ -40,4 +70,53 @@
     {% endfor %}
   </div>
 </section>
+
+<!-- Script do Carrossel 3D -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.carousel-item');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentIndex = 0;
+
+    function updateCarousel() {
+      items.forEach((item, index) => {
+        // Reseta as classes
+        item.className = 'carousel-item hidden';
+        dots[index].className = 'dot';
+        
+        // Define as posições relativas
+        if (index === currentIndex) {
+          item.className = 'carousel-item active';
+          dots[index].className = 'dot active';
+        } else if (index === (currentIndex - 1 + items.length) % items.length) {
+          item.className = 'carousel-item prev';
+        } else if (index === (currentIndex + 1) % items.length) {
+          item.className = 'carousel-item next';
+        }
+      });
+    }
+
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % items.length;
+      updateCarousel();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+
+    // Iniciar o carrossel
+    updateCarousel();
+  });
+</script>
 {% endblock %}
