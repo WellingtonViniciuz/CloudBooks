@@ -1,33 +1,52 @@
 {% extends "home.html" %}
 {% block titulo %}Minha conta{% endblock %}
 {% block conteudo %}
-<h1>Minha conta</h1>
-<section class="duas">
-  <form method="post" class="formulario">
-    {% csrf_token %}
-    <h2>Configurações do perfil</h2>
-    {{ perfil.as_p }}
-    <button class="botao" name="salvar_perfil" value="1">Salvar dados</button>
-  </form>
-  <form method="post" class="formulario">
-    {% csrf_token %}
-    <h2>Trocar senha</h2>
-    {{ senha.as_p }}
-    <button class="botao secundario" name="trocar_senha" value="1">Alterar senha</button>
-  </form>
-</section>
-<h2 class="secao">Meus pedidos</h2>
-{% for pedido in pedidos %}
-  <div class="pedido">
-    <strong>Pedido #{{ pedido.pk }}</strong> · {{ pedido.criado_em|date:"d/m/Y" }} · {{ pedido.get_status_display }} · R$ {{ pedido.total }}
+<h1 class="secao">Minha conta</h1>
+
+<section class="duas" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+  <div style="background: var(--cor-paineis); padding: 2rem; border-radius: 8px; border: 1px solid var(--cor-roxo-principal);">
+    <form method="post" class="formulario" style="max-width: 100%;">
+      {% csrf_token %}
+      <h2 style="color: var(--cor-dourado-claro); margin-top: 0;">Configurações do Perfil</h2>
+      {{ perfil.as_p }}
+      <button type="submit" class="botao" name="salvar_perfil" value="1">Salvar Dados</button>
+    </form>
   </div>
-{% empty %}
-  <p class="vazio">Você ainda não fez pedidos.</p>
-{% endfor %}
-<h2 class="secao">Minhas indicações</h2>
-{% for post in avaliacoes %}
-  <div class="pedido"><strong>{{ post.livro.titulo }}</strong> · nota {{ post.nota }}/5<p>{{ post.texto }}</p></div>
-{% empty %}
-  <p class="vazio">Nenhuma indicação publicada no Clube.</p>
-{% endfor %}
+  
+  <div style="background: var(--cor-paineis); padding: 2rem; border-radius: 8px; border: 1px solid var(--cor-roxo-principal);">
+    <form method="post" class="formulario" style="max-width: 100%;">
+      {% csrf_token %}
+      <h2 style="color: var(--cor-dourado-claro); margin-top: 0;">Segurança</h2>
+      {{ senha.as_p }}
+      <button type="submit" class="botao secundario" name="trocar_senha" value="1">Alterar Senha</button>
+    </form>
+  </div>
+</section>
+
+<h2 class="secao">Meus Pedidos</h2>
+<div style="display: flex; flex-direction: column; gap: 1rem;">
+  {% for pedido in pedidos %}
+    <div class="pedido" style="background: var(--cor-fundo-secundario); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--cor-roxo-destaque);">
+      <strong style="color: var(--cor-dourado-principal);">Pedido #{{ pedido.pk }}</strong> 
+      <span style="color: var(--cor-texto-suave);">· {{ pedido.criado_em|date:"d/m/Y" }} ·</span> 
+      <span style="background: var(--cor-azul-roxo); padding: 2px 8px; border-radius: 12px; font-size: 0.9rem;">{{ pedido.get_status_display }}</span> 
+      <span style="float: right; font-weight: bold; color: var(--cor-texto-principal);">R$ {{ pedido.total }}</span>
+    </div>
+  {% empty %}
+    <p class="vazio" style="color: var(--cor-texto-suave);">Você ainda não fez pedidos.</p>
+  {% endfor %}
+</div>
+
+<h2 class="secao" style="margin-top: 3rem;">Minhas Indicações no Clube</h2>
+<div style="display: flex; flex-direction: column; gap: 1rem;">
+  {% for post in avaliacoes %}
+    <div class="pedido" style="background: var(--cor-fundo-secundario); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--cor-azul-roxo);">
+      <strong style="color: var(--cor-dourado-claro); font-size: 1.1rem;">{{ post.livro.titulo }}</strong> 
+      <span style="color: var(--cor-texto-suave);">· Nota {{ post.nota }}/5</span>
+      <p style="margin-top: 0.8rem; color: var(--cor-texto-principal);">"{{ post.texto }}"</p>
+    </div>
+  {% empty %}
+    <p class="vazio" style="color: var(--cor-texto-suave);">Nenhuma indicação publicada no Clube ainda.</p>
+  {% endfor %}
+</div>
 {% endblock %}

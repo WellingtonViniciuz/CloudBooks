@@ -30,28 +30,39 @@
 /* ==========================================================================
    Configurações Globais
    ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Cormorant Garamond', serif;
   color: var(--cor-texto-principal);
-  
   background-image: url('../img/imgRoot.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-color: var(--cor-fundo-principal);
+  line-height: 1.6;
 }
 
 a {
   color: var(--cor-lilas);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color 0.3s ease;
 }
 
-a:hover {
-  color: var(--cor-texto-principal);
+a:hover, a:focus-visible {
+  color: var(--cor-dourado-principal);
+  outline: none;
+}
+
+/* Foco de acessibilidade para navegação por teclado */
+:focus-visible {
+  outline: 2px dashed var(--cor-dourado-principal);
+  outline-offset: 4px;
 }
 
 /* ==========================================================================
@@ -98,15 +109,14 @@ a:hover {
   justify-content: flex-end; 
   padding: 2rem 3rem;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .entrada {
   background-color: rgba(31, 31, 46, 0.90);
   border: 1px solid var(--cor-roxo-principal);
   border-radius: 16px;
-  padding: 4rem;
-  max-width: 550px;
+  padding: 4rem 2rem;
+  max-width: 600px;
   margin: auto; 
   text-align: center;
   box-shadow: 0 20px 50px rgba(11, 11, 26, 0.7);
@@ -115,65 +125,61 @@ a:hover {
 
 .entrada h1 {
   color: var(--cor-dourado-principal);
-  font-size: 3.5rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  margin: 0 0 1rem 0;
   font-weight: 700;
   letter-spacing: 1px;
 }
 
 .entrada p {
   color: var(--cor-texto-secundario);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin-bottom: 2.5rem;
-  line-height: 1.5;
 }
 
 /* ==========================================================================
    Botões do Topo (Autenticação e Navegação)
    ========================================================================== */
-
-/* Container para os botões na página de entrada */
 .auth-buttons {
   display: flex;
-  gap: 15px; 
+  gap: 1rem; 
   align-items: center;
   justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
-/* Estilo do botão de Login (Fundo transparente, borda fina) */
 .btn-login {
   background-color: transparent;
-  color: #ffffff;
-  border: 1px solid #a0a0a0; 
+  color: var(--cor-texto-principal);
+  border: 1px solid var(--cor-cinza-claro); 
   border-radius: 25px; 
   padding: 8px 24px;
-  text-decoration: none;
-  font-size: 16px;
-  font-family: inherit; /* Herda a fonte do body (Cormorant Garamond) */
+  font-size: 1rem;
+  font-family: inherit;
   transition: all 0.3s ease;
 }
 
-.btn-login:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.btn-login:hover, .btn-login:focus-visible {
+  background-color: var(--cor-fundo-secundario);
+  border-color: var(--cor-texto-principal);
 }
 
-/* Estilo do botão Criar Conta (Fundo mostarda sólido) */
 .btn-criar-conta {
-  background-color: #f3c669; 
-  color: #1a1a2e; 
+  background-color: var(--cor-dourado-principal); 
+  color: var(--cor-fundo-principal); 
   border: none;
   border-radius: 25px; 
   padding: 9px 24px; 
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: inherit; /* Herda a fonte do body (Cormorant Garamond) */
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
   transition: all 0.3s ease;
 }
 
-.btn-criar-conta:hover {
-  background-color: #e5b758;
+.btn-criar-conta:hover, .btn-criar-conta:focus-visible {
+  background-color: var(--cor-destaque);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(217, 179, 111, 0.4);
 }
 
 /* ==========================================================================
@@ -185,30 +191,38 @@ a:hover {
   padding: 0.8rem 1.5rem;
   border-radius: 8px;
   font-size: 1.1rem;
+  font-family: inherit;
   font-weight: 600;
   text-decoration: none;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease; 
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 4px 15px rgba(106, 59, 184, 0.4);
 }
 
-.botao:hover {
+.botao:hover, .botao:focus-visible {
   background-color: var(--cor-hover);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(155, 107, 255, 0.6);
 }
 
+.botao:active {
+  background-color: var(--cor-ativo);
+  transform: translateY(0);
+}
+
 .botao.secundario {
   background-color: transparent;
-  border: 2px solid var(--cor-dourado-principal);
-  color: var(--cor-dourado-principal);
+  border: 2px solid var(--cor-roxo-suave);
+  color: var(--cor-texto-principal);
   box-shadow: none;
 }
 
-.botao.secundario:hover {
-  background-color: var(--cor-dourado-principal);
+.botao.secundario:hover, .botao.secundario:focus-visible {
+  background-color: var(--cor-roxo-suave);
   color: var(--cor-fundo-principal); 
 }
 
@@ -218,19 +232,21 @@ a:hover {
 }
 
 /* ==========================================================================
-   Cabeçalho Interno (.topo)
+   Cabeçalho Interno (.topo) e Busca
    ========================================================================== */
 .topo {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: rgba(11, 11, 26, 0.85);
+  background: rgba(11, 11, 26, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--cor-roxo-principal);
   position: sticky;
   top: 0;
   z-index: 100;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .marca {
@@ -243,15 +259,24 @@ a:hover {
   display: flex;
   gap: 1.5rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .busca input {
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
   border: 1px solid var(--cor-roxo-principal);
   background: var(--cor-paineis);
   color: var(--cor-texto-principal);
   min-width: 250px;
+  font-family: inherit;
+  transition: border-color 0.3s;
+}
+
+.busca input:focus {
+  outline: none;
+  border-color: var(--cor-dourado-principal);
+  box-shadow: 0 0 0 2px rgba(217, 179, 111, 0.2);
 }
 
 .busca input::placeholder {
@@ -262,8 +287,13 @@ a:hover {
   display: flex;
   align-items: center;
   background: var(--cor-roxo-destaque);
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  color: var(--cor-texto-principal);
+}
+
+.link-carrinho:hover {
+  background: var(--cor-hover);
   color: var(--cor-texto-principal);
 }
 
@@ -271,9 +301,10 @@ a:hover {
   background: var(--cor-erro);
   color: var(--cor-texto-principal);
   border-radius: 50%;
-  padding: 2px 6px;
+  padding: 2px 8px;
   font-size: 0.8rem;
-  margin-left: 4px;
+  margin-left: 8px;
+  font-weight: bold;
 }
 
 /* ==========================================================================
@@ -282,63 +313,116 @@ a:hover {
 main {
   max-width: 1200px;
   margin: 2rem auto;
-  padding: 2rem;
-  background: rgba(31, 31, 46, 0.85);
+  padding: 2.5rem;
+  background: rgba(31, 31, 46, 0.90);
   border-radius: 12px;
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(58, 27, 107, 0.5);
+  border: 1px solid var(--cor-azul-roxo);
   min-height: 70vh;
+}
+
+.secao {
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--cor-dourado-claro);
+  border-bottom: 1px solid var(--cor-roxo-principal);
+  padding-bottom: 0.5rem;
 }
 
 .grade {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 /* ==========================================================================
-   Cards de Livro (.card)
+   Cards de Livro (.card e imagens)
    ========================================================================== */
 .card {
   background: var(--cor-fundo-secundario);
   border: 1px solid var(--cor-roxo-principal);
-  border-radius: 8px;
-  padding: 1rem;
+  border-radius: 12px;
+  padding: 1.2rem;
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 25px rgba(11, 11, 26, 0.8);
   border-color: var(--cor-roxo-destaque);
 }
 
-.card .capa, .vitrine .capa {
+.capa {
   width: 100%;
-  height: 300px;
-  border-radius: 6px;
+  height: 320px;
+  border-radius: 8px;
   margin-bottom: 1rem;
+  object-fit: cover;
+  padding: 0;
+  background-color: var(--cor-paineis);
+}
+
+.capa.mini {
+  height: 120px;
+  width: 80px;
+  margin-bottom: 0;
 }
 
 .card h3 {
   font-size: 1.2rem;
   margin: 0.5rem 0;
   color: var(--cor-texto-principal);
+  line-height: 1.3;
 }
 
 .card .autor {
   font-size: 1rem;
   color: var(--cor-texto-suave);
-  margin-bottom: 0.5rem;
+  margin-bottom: auto; /* Empurra o preço e botão para baixo */
 }
 
 .card .preco {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 700;
   color: var(--cor-dourado-claro);
-  margin-bottom: 1rem;
+  margin: 1rem 0;
+}
+
+/* ==========================================================================
+   Formulários Padrão (.formulario)
+   ========================================================================== */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.formulario input, 
+.formulario textarea, 
+.formulario select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--cor-roxo-principal);
+  background: var(--cor-paineis);
+  color: var(--cor-texto-principal);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.formulario input:focus, 
+.formulario textarea:focus {
+  outline: none;
+  border-color: var(--cor-dourado-principal);
+  box-shadow: 0 0 0 2px rgba(217, 179, 111, 0.2);
 }
 
 /* ==========================================================================
@@ -361,18 +445,35 @@ main {
 
 .rodape-links h3 {
   color: var(--cor-dourado-principal);
+  margin-bottom: 1rem;
 }
 
 .rodape-links nav {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .rodape-direitos {
   text-align: center;
   margin-top: 3rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--cor-roxo-principal);
+  border-top: 1px solid var(--cor-azul-roxo);
   color: var(--cor-texto-suave);
+  font-size: 0.9rem;
+}
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+  .topo {
+    flex-direction: column;
+    text-align: center;
+  }
+  .entrada {
+    padding: 2rem 1.5rem;
+  }
+  main {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
 }

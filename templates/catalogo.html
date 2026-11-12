@@ -2,66 +2,11 @@
 {% block titulo %}{{ secao }}{% endblock %}
 {% block conteudo %}
 
-<section class="vitrine" aria-label="Livros em Destaque">
-  <a class="slide" href="#">
-    <img class="capa" src="https://m.media-amazon.com/images/I/91DZobBc1BL._SL1500_.jpg" alt="Coraline" style="padding:0; object-fit:cover;">
-    <div>
-      <h2>Coraline</h2>
-      <p class="autor">Neil Gaiman</p>
-      <p class="preco">R$ 27,12</p>
-    </div>
-  </a>
-
-  <a class="slide" href="#">
-    <img class="capa" src="https://m.media-amazon.com/images/I/91n-D9eAH0L._SL1500_.jpg" alt="A Ilha do Tesouro" style="padding:0; object-fit:cover;">
-    <div>
-      <h2>A Ilha do Tesouro</h2>
-      <p class="autor">Robert Louis Stevenson</p>
-      <p class="preco">R$ 23,72</p>
-    </div>
-  </a>
-
-  <a class="slide" href="#">
-    <img class="capa" src="https://m.media-amazon.com/images/I/71L28YvPobL._SL1026_.jpg" alt="Os Miseráveis" style="padding:0; object-fit:cover;">
-    <div>
-      <h2>Os Miseráveis</h2>
-      <p class="autor">Victor Hugo</p>
-      <p class="preco">R$ 89,90</p>
-    </div>
-  </a>
-
-  <a class="slide" href="#">
-    <img class="capa" src="https://m.media-amazon.com/images/I/51tAD6LyZ-L._SL1360_.jpg" alt="Fahrenheit 451" style="padding:0; object-fit:cover;">
-    <div>
-      <h2>Fahrenheit 451</h2>
-      <p class="autor">Ray Bradbury</p>
-      <p class="preco">R$ 34,90</p>
-    </div>
-  </a>
-
-  <a class="slide" href="#">
-    <img class="capa" src="https://m.media-amazon.com/images/I/61gfnGu9cTL._SL1200_.jpg" alt="Drácula" style="padding:0; object-fit:cover;">
-    <div>
-      <h2>Drácula</h2>
-      <p class="autor">Bram Stoker</p>
-      <p class="preco">R$ 39,90</p>
-    </div>
-  </a>
-
-  <a class="slide" href="#">
-    <img class="capa" src="https://m.media-amazon.com/images/I/51TMmMNtZiL._SY445_SX342_ML2_.jpg" alt="Neuromancer" style="padding:0; object-fit:cover;">
-    <div>
-      <h2>Neuromancer</h2>
-      <p class="autor">William Gibson</p>
-      <p class="preco">R$ 44,90</p>
-    </div>
-  </a>
-</section>
-
-<nav class="chips" aria-label="Filtrar por categorias">
-  <a class="chip{% if not categoria_ativa %} ativo{% endif %}" href="{% url 'categorias' %}">Todas</a>
+<!-- Substituição do style inline das capas da vitrine pela classe .capa já ajustada no CSS -->
+<nav class="chips" aria-label="Filtrar por categorias" style="display: flex; gap: 0.8rem; margin: 2rem 0; flex-wrap: wrap;">
+  <a class="botao secundario pequeno {% if not categoria_ativa %}ativo{% endif %}" href="{% url 'categorias' %}">Todas</a>
   {% for c in categorias %}
-  <a class="chip{% if categoria_ativa == c %} ativo{% endif %}" href="{% url 'categoria' c.pk %}">{{ c.nome }}</a>
+  <a class="botao secundario pequeno {% if categoria_ativa == c %}ativo{% endif %}" href="{% url 'categoria' c.pk %}">{{ c.nome }}</a>
   {% endfor %}
 </nav>
 
@@ -89,7 +34,9 @@
     {% for livro in livros %}
       {% include "parciais/card.html" %}
     {% empty %}
-      <p class="vazio" role="alert">Nenhum livro encontrado. Tente ajustar os filtros ou pesquisar por outro termo.</p>
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+        <p class="vazio" role="alert" style="color: var(--cor-texto-suave); font-size: 1.2rem;">Nenhum livro encontrado. Tente ajustar os filtros ou pesquisar por outro termo.</p>
+      </div>
     {% endfor %}
   </div>
 </section>

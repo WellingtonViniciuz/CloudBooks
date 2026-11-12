@@ -26,31 +26,33 @@
 
   <form class="busca" action="{% url 'pesquisa' %}" method="get" role="search">
     <label for="campo-busca" class="sr-only">Pesquisar livros</label>
-    <input id="campo-busca" type="search" name="q" placeholder="Buscar por título, autor ou categoria" value="{{ request.GET.q }}">
+    <input id="campo-busca" type="search" name="q" placeholder="Buscar por título ou autor..." value="{{ request.GET.q }}">
   </form>
   
   <nav aria-label="Conta e Carrinho" class="nav-usuario">
     {% if user.is_authenticated %}
-      <span class="saudacao-usuario">Olá, {{ user.first_name|default:user.username }}</span>
+      <span style="color: var(--cor-dourado-claro); font-weight: 600; margin-right: 1rem;">Olá, {{ user.first_name|default:user.username }}</span>
       <a href="{% url 'favoritos' %}">Favoritos</a>
       <a href="{% url 'configuracoes' %}">Minha conta</a>
       {% if user.is_staff %}<a href="{% url 'admin:index' %}">Painel</a>{% endif %}
       
-      <form method="post" action="{% url 'sair' %}" class="form-sair">
+      <form method="post" action="{% url 'sair' %}" style="display: inline-block; margin: 0;">
         {% csrf_token %}
-        <button class="link link-sair" aria-label="Sair da conta">Sair</button>
+        <button type="submit" style="background: none; border: none; color: var(--cor-lilas); cursor: pointer; font-family: inherit; font-size: 1rem; padding: 0;">Sair</button>
       </form>
       
-      <a href="{% url 'carrinho' %}" class="link-carrinho {% if qtd_carrinho > 0 %}com-itens{% endif %}" aria-label="Carrinho com {{ qtd_carrinho }} itens">
+      <a href="{% url 'carrinho' %}" class="link-carrinho" aria-label="Carrinho com {{ qtd_carrinho }} itens">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
         Carrinho {% if qtd_carrinho > 0 %}<span class="badge-carrinho">{{ qtd_carrinho }}</span>{% endif %}
       </a>
       
     {% else %}
-      <a href="{% url 'login' %}" class="botao-login">Login</a>
-      <a href="{% url 'cadastro' %}" class="botao-criar-conta">Criar conta</a>
+      <div class="auth-buttons">
+        <a href="{% url 'login' %}" class="btn-login">Login</a>
+        <a href="{% url 'cadastro' %}" class="btn-criar-conta">Criar conta</a>
+      </div>
       
-      <a href="{% url 'carrinho' %}" class="link-carrinho {% if qtd_carrinho > 0 %}com-itens{% endif %}">
+      <a href="{% url 'carrinho' %}" class="link-carrinho" style="margin-left: 1rem;">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
         Carrinho {% if qtd_carrinho > 0 %}<span class="badge-carrinho">{{ qtd_carrinho }}</span>{% endif %}
       </a>
@@ -61,8 +63,10 @@
 
 <main id="conteudo-principal">
   {% if messages %}
-  <ul class="avisos" aria-live="polite">
-    {% for m in messages %}<li class="{{ m.tags }}">{{ m }}</li>{% endfor %}
+  <ul class="avisos" aria-live="polite" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+    {% for m in messages %}
+    <li class="{{ m.tags }}" style="background: var(--cor-azul-roxo); color: var(--cor-texto-principal); padding: 1rem; border-radius: 8px; margin-bottom: 0.5rem; border-left: 4px solid var(--cor-dourado-principal);">{{ m }}</li>
+    {% endfor %}
   </ul>
   {% endif %}
   
@@ -74,7 +78,7 @@
   <div class="rodape-conteudo">
     <div class="rodape-marca-info">
       <a class="marca" href="{% url 'home' %}" aria-hidden="true">CloudBooks</a>
-      <p>Um universo de histórias à sua espera. A sua loja e clube de leitura online.</p>
+      <p style="color: var(--cor-texto-suave); margin-top: 1rem;">Um universo de histórias à sua espera. A sua loja e clube de leitura online.</p>
     </div>
     
     <div class="rodape-links">
@@ -89,7 +93,7 @@
     <div class="rodape-links">
       <h3>Apoio ao Cliente</h3>
       <nav aria-label="Links de apoio">
-        <a href="#">A Minha Conta</a>
+        <a href="{% url 'configuracoes' %}">A Minha Conta</a>
         <a href="#">Termos e Condições</a>
         <a href="#">Política de Privacidade</a>
       </nav>
