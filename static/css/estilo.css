@@ -1,6 +1,3 @@
-/* ==========================================================================
-   Variáveis Globais - Paleta de Cores CloudBooks
-   ========================================================================== */
 :root {
   --cor-fundo-principal: #0B0B1A;
   --cor-fundo-secundario: #1A1033;
@@ -27,9 +24,6 @@
   --cor-erro: #FF6B8B;
 }
 
-/* ==========================================================================
-   Configurações Globais
-   ========================================================================== */
 * {
   box-sizing: border-box;
 }
@@ -60,15 +54,11 @@ a:focus-visible {
   outline: none;
 }
 
-/* Foco de acessibilidade para navegação por teclado */
 :focus-visible {
   outline: 2px dashed var(--cor-dourado-principal);
   outline-offset: 4px;
 }
 
-/* ==========================================================================
-   Acessibilidade
-   ========================================================================== */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -95,9 +85,6 @@ a:focus-visible {
   top: 0;
 }
 
-/* ==========================================================================
-   Página de Entrada (Landing Page)
-   ========================================================================== */
 .entrada-pagina {
   display: flex;
   flex-direction: column;
@@ -138,9 +125,6 @@ a:focus-visible {
   margin-bottom: 2.5rem;
 }
 
-/* ==========================================================================
-   Botões do Topo (Autenticação e Navegação)
-   ========================================================================== */
 .auth-buttons {
   display: flex;
   gap: 1rem;
@@ -186,9 +170,6 @@ a:focus-visible {
   box-shadow: 0 4px 15px rgba(217, 179, 111, 0.4);
 }
 
-/* ==========================================================================
-   Botões Gerais (.botao)
-   ========================================================================== */
 .botao {
   background-color: var(--cor-roxo-destaque);
   color: var(--cor-texto-principal);
@@ -237,9 +218,6 @@ a:focus-visible {
   font-size: 0.95rem;
 }
 
-/* ==========================================================================
-   Cabeçalho Interno (.topo) e Busca
-   ========================================================================== */
 .topo {
   display: flex;
   justify-content: space-between;
@@ -314,9 +292,6 @@ a:focus-visible {
   font-weight: bold;
 }
 
-/* ==========================================================================
-   Layout Principal e Grade de Livros (.grade)
-   ========================================================================== */
 main {
   max-width: 1200px;
   margin: 2rem auto;
@@ -343,9 +318,6 @@ main {
   margin-top: 1.5rem;
 }
 
-/* ==========================================================================
-   Cards de Livro (.card e imagens)
-   ========================================================================== */
 .card {
   background: var(--cor-fundo-secundario);
   border: 1px solid var(--cor-roxo-principal);
@@ -390,7 +362,6 @@ main {
   font-size: 1rem;
   color: var(--cor-texto-suave);
   margin-bottom: auto;
-  /* Empurra o preço e botão para baixo */
 }
 
 .card .preco {
@@ -400,9 +371,6 @@ main {
   margin: 1rem 0;
 }
 
-/* ==========================================================================
-   Formulários Padrão (.formulario)
-   ========================================================================== */
 .formulario {
   display: flex;
   flex-direction: column;
@@ -433,9 +401,6 @@ main {
   box-shadow: 0 0 0 2px rgba(217, 179, 111, 0.2);
 }
 
-/* ==========================================================================
-   Rodapé (.rodape)
-   ========================================================================== */
 .rodape {
   background: var(--cor-fundo-principal);
   padding: 3rem 2rem;
@@ -471,7 +436,6 @@ main {
   font-size: 0.9rem;
 }
 
-/* Responsividade Básica */
 @media (max-width: 768px) {
   .topo {
     flex-direction: column;
@@ -488,11 +452,6 @@ main {
   }
 }
 
-/* ==========================================================================
-   Efeito Glassmorphism & Novos Layouts (Adicionado)
-   ========================================================================== */
-
-/* Paineis de vidro translúcido */
 .glass-panel {
   background: rgba(20, 15, 35, 0.45);
   backdrop-filter: blur(12px);
@@ -503,7 +462,6 @@ main {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
-/* Títulos com brilho */
 .titulo-glow {
   color: var(--cor-texto-principal);
   font-size: 2.5rem;
@@ -514,11 +472,9 @@ main {
   gap: 12px;
 }
 
-/* Botão Dourado Gradiente */
 .btn-gold {
   background: linear-gradient(135deg, #F4C97A, #C79A47);
   color: #1A1033 !important;
-  /* CORREÇÃO: Força a cor escura no texto */
   font-weight: 700;
   border: none;
   border-radius: 25px;
@@ -537,10 +493,8 @@ main {
   transform: scale(1.02);
   box-shadow: 0 0 20px rgba(244, 201, 122, 0.4);
   color: #1A1033 !important;
-  /* CORREÇÃO: Impede que o hover global de links mude a cor do texto */
 }
 
-/* Botão Google / Secundário Escuro */
 .btn-dark-outline {
   background: rgba(0, 0, 0, 0.4);
   color: var(--cor-texto-principal);
@@ -560,7 +514,6 @@ main {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Layout Carrinho */
 .carrinho-layout {
   display: grid;
   grid-template-columns: 1fr 350px;
@@ -606,7 +559,12 @@ main {
   padding: 0;
 }
 
-/* Formulários Estilizados para Auth e Config */
+.qtd-valor {
+  font-weight: bold;
+  width: 20px;
+  text-align: center;
+}
+
 .auth-box {
   max-width: 450px;
   margin: 3rem auto;
@@ -633,7 +591,6 @@ main {
   color: white !important;
 }
 
-/* Layout Configurações */
 .config-layout {
   display: grid;
   grid-template-columns: 250px 1fr;
@@ -667,7 +624,6 @@ main {
 }
 
 @media(max-width: 900px) {
-
   .carrinho-layout,
   .config-layout {
     grid-template-columns: 1fr;
@@ -678,9 +634,6 @@ html {
   font-size: 18px;
 }
 
-/* ==========================================================================
-   Hero Destaques (Carrossel 3D)
-   ========================================================================== */
 .hero-destaque {
   display: flex;
   align-items: center;
@@ -690,7 +643,6 @@ html {
   border-radius: 20px;
   margin-bottom: 4rem;
   border: 1px solid rgba(217, 179, 111, 0.15);
-  /* Borda levemente dourada */
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   gap: 2rem;
   overflow: hidden;
@@ -767,13 +719,11 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Efeito 3D nas Posições */
 .carousel-item.active {
   transform: translateX(0) scale(1.1) translateZ(100px);
   z-index: 3;
   opacity: 1;
   box-shadow: 0 0 40px rgba(217, 179, 111, 0.3);
-  /* Brilho dourado no livro ativo */
 }
 
 .carousel-item.active img {
@@ -876,6 +826,87 @@ html {
 
   .nav-btn {
     display: none;
-    /* Oculta setas no mobile para ficar mais limpo, usando apenas dots */
   }
 }
+
+.formulario input[type="radio"],
+.formulario input[type="checkbox"] {
+    width: auto !important;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.formulario ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.formulario ul li label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    color: var(--cor-texto-principal);
+}
+
+.carrinho-subtitulo { color: var(--cor-texto-suave); margin-bottom: 2rem; font-size: 1.1rem; }
+.carrinho-lista { padding: 1rem; }
+.carrinho-img { border-radius: 8px; object-fit: cover; }
+.capa-fallback { display: flex; align-items: center; justify-content: center; background: var(--cor-paineis); border: 2px solid var(--cor-roxo-principal); border-radius: 8px; color: var(--cor-dourado-claro); font-weight: bold; text-align: center; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); padding: 1.5rem; }
+.capa-fallback.mini-fallback { border: 1px solid var(--cor-roxo-principal); font-size: 0.7rem; padding: 4px; overflow: hidden; height: 120px; width: 80px; box-shadow: none; }
+.item-info { flex: 1; }
+.item-titulo { margin: 0; font-size: 1.1rem; }
+.item-link { color: #fff; }
+.item-autor { margin: 0.2rem 0; font-size: 0.9rem; }
+.item-meta { margin: 0.2rem 0; font-size: 0.8rem; color: var(--cor-texto-suave); display: flex; align-items: center; gap: 4px; }
+.star-rating { color: var(--cor-dourado-principal); }
+.item-preco { font-weight: bold; font-size: 1.2rem; width: 100px; text-align: right; }
+.btn-remover-form { margin: 0; }
+.btn-remover { background: none; border: none; color: var(--cor-texto-suave); cursor: pointer; }
+.continuar-comprando { margin-top: 2rem; padding-left: 1rem; }
+.link-continuar { color: var(--cor-texto-suave); display: flex; align-items: center; gap: 8px; }
+.carrinho-resumo { height: fit-content; }
+.resumo-titulo { margin-top: 0; font-size: 1.4rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; }
+.resumo-linha { display: flex; justify-content: space-between; margin: 1.5rem 0 0.5rem 0; color: var(--cor-texto-suave); }
+.resumo-linha.frete { margin-bottom: 1.5rem; }
+.resumo-total { display: flex; justify-content: space-between; align-items: center; font-size: 1.5rem; font-weight: bold; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-bottom: 2rem; }
+.resumo-acoes { display: flex; flex-direction: column; gap: 1rem; }
+.link-finalizar { width: 100%; text-decoration: none; }
+.ou { text-align: center; color: var(--cor-texto-suave); font-size: 0.9rem; margin: 0; }
+.btn-google { width: 100%; }
+.rodape-seguranca { display: flex; justify-content: center; gap: 3rem; margin-top: 4rem; flex-wrap: wrap; color: var(--cor-texto-suave); font-size: 0.9rem; }
+.seguranca-item { display: flex; align-items: center; gap: 8px; }
+.carrinho-vazio { text-align: center; padding: 4rem; }
+.vazio-texto { font-size: 1.2rem; color: var(--cor-texto-suave); }
+.link-explorar { margin-top: 1rem; text-decoration: none; }
+.btn-voltar-container { margin-bottom: 1.5rem; }
+.link-voltar { color: var(--cor-texto-suave); display: inline-flex; align-items: center; gap: 8px; font-weight: 500; }
+.btn-remover-fav-form { margin-top: auto; }
+.btn-remover-fav { width: 100%; border-color: var(--cor-erro); color: var(--cor-erro); }
+.favoritos-vazio { grid-column: 1 / -1; text-align: center; padding: 4rem 0; }
+.estante-titulo-secao { margin-top: 4rem; }
+.estante-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+.estante-coluna { background: var(--cor-paineis); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--cor-roxo-principal); }
+.estante-titulo { color: var(--cor-dourado-principal); margin-top: 0; border-bottom: 1px solid var(--cor-azul-roxo); padding-bottom: 0.5rem; text-align: center; }
+.estante-lista { list-style: none; padding: 0; margin: 1rem 0 0 0; display: flex; flex-direction: column; gap: 0.8rem; }
+.estante-item { background: var(--cor-fundo-secundario); padding: 0.8rem; border-radius: 6px; border-left: 3px solid var(--cor-lilas); }
+.estante-link { display: block; color: var(--cor-texto-principal); font-weight: 600; }
+.estante-vazio { color: var(--cor-texto-suave); text-align: center; font-style: italic; margin: 0; }
+.menu-desativado { opacity: 0.5; cursor: not-allowed !important; }
+.btn-sair-container { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+.btn-sair { background: none; border: none; color: var(--cor-texto-suave); display: flex; align-items: center; gap: 12px; cursor: pointer; font-size: 1rem; padding: 12px 16px; }
+.config-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+.config-titulo { margin: 0; font-size: 2rem; }
+.config-subtitulo { margin: 0; color: var(--cor-texto-suave); }
+.config-section { margin-bottom: 2rem; }
+.config-section-titulo { margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; }
+.config-form { max-width: 100%; }
+.config-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+.config-form-actions { text-align: right; margin-top: 1.5rem; }
+.finalizar-container { max-width: 600px; margin: 2rem auto; background: var(--cor-paineis); padding: 3rem 2rem; border-radius: 12px; border: 1px solid var(--cor-roxo-principal); }
+.finalizar-titulo { margin-top: 0; border-bottom: 1px solid var(--cor-azul-roxo); padding-bottom: 1rem; }
+.finalizar-form { margin-top: 2rem; }
+.finalizar-resumo { display: flex; justify-content: space-between; align-items: center; background: var(--cor-fundo-secundario); padding: 1.5rem; border-radius: 8px; margin: 2rem 0; border-left: 4px solid var(--cor-dourado-principal); }
+.finalizar-resumo-texto { font-size: 1.2rem; color: var(--cor-texto-suave); }
+.finalizar-resumo-valor { font-size: 2rem; color: var(--cor-dourado-claro); }
+.finalizar-btn { width: 100%; font-size: 1.2rem; padding: 1rem; }
